@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+
+        #container{
+            width: 64px;
+            height: 64px;
+            margin: 300px auto;
+            position: relative;
+        }
+        #menu{
+            position: absolute;
+            left: 12px;
+            top: 12px;
+        }
+        img{
+            cursor: pointer;
+            position: absolute;
+            transition:transform 1s ease;
+        }
+        #home{
+            width: 64px;
+            height: 64px;
+            position: absolute;
+            transition:transform 1s ease;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="menu">
+            <img src="sun.png" alt="">
+            <img src="QQ%20(1).png" alt="">
+            <img src="map.png" alt="">
+            <img src="phone.png" alt="">
+            <img src="pocket%20(1).png" alt="">
+        </div>
+        <div id="home">
+            <img src="maoqiu.png" alt="">
+        </div>
+    </div>
+        <script>
+            var oHome = document.querySelector("#home");
+            var oMenu = document.getElementById("menu");
+            var aIMG = oMenu.getElementsByTagName("img");
+            var bFlag = false;//false表示打开，true表示关闭
+            oHome.onclick = function() {
+                if (bFlag) {//要合并
+                    this.style.transform = "rotate(0deg)";
+                    for(var i=0; i<aIMG.length; i++){
+                        aIMG[i].style.transitionDelay = i*50+"ms";
+                        aIMG[i].style.transform = "translate(0,0) rotate(0deg)";
+                    }
+                } else {//要打开
+                    this.style.transform = "rotate(-360deg)";
+                    for (var i = 0; i < aIMG.length; i++) {
+                        var x = -250 * Math.cos(22.5 * i * Math.PI / 180);
+                        var y = -250 * Math.sin(22.5 * i * Math.PI / 180);
+                        aIMG[i].style.transform = "translate(" + x + "px," + y + "px) rotate(-360deg)";
+                        aIMG[i].style.transitionDelay = (aIMG.length-i)*50+"ms";
+                    }
+                }
+                bFlag = !bFlag;
+            };
+        </script>
+</body>
+</html>
