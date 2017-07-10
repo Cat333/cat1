@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 404px;
+            height: 250px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        #container li{
+            width:100px;
+            height: 250px;
+            float: left;
+            border-left: 1px solid #aaa;
+            overflow: hidden;
+            position: relative;
+            transition: all 1s ease;
+        }
+        #container li a {
+            position: absolute;
+            bottom: 0;
+            width: 280px;
+            height: 30px;
+            background: #000000;
+            opacity: 0.5;
+            color: #fff;
+
+        }
+        #container:hover li{
+            width: 40px;
+        }
+        #container li:hover{
+            width: 280px;
+        }
+    </style>
+</head>
+<body>
+
+    <ul id="container">
+        <li><a href="#">描述1</a><img src="rabbit.jpg" alt=""/></li>
+        <li><a href="#">描述2</a><img src="rabbit1.jpg" alt=""/></li>
+        <li><a href="#">描述3</a><img src="rabbit2.jpg" alt=""/></li>
+        <li><a href="#">描述4</a><img src="rabbit3.jpg" alt=""/></li>
+    </ul>
+</body>
+</html>
