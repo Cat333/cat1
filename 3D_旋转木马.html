@@ -35,20 +35,25 @@
     </div>
     <script>
         var oContainer = document.getElementById("container");
-        var aImg = oContainer.getElementsByTagName("img");
-        var html = "";
-        for(var i=0;i<9;i++){
-            html += "<img src='food"+i+".jpg'>";
-            //html += "<img src='food"+i+".jpg' style='transform:rotateY("+40*i+"deg) translateZ(280px)'>";
+        var count = 0;
+        for(var i=0; i<9; i++){
+            var oImg = new Image();
+            oImg.src = "food"+i+".jpg";
+            oContainer.appendChild(oImg);
+            oImg.onload = function(){
+                count++;
+                if(count >=8){
+                    loadSuccess();
+                }
+            };
         }
-        oContainer.innerHTML = html;
-
-        setTimeout(function () {
-            for (var i=0; i<9; i++){
-                aImg[i].style.transitionDelay = i*200+"ms";
-                aImg[i].style.transform = "rotateY("+40*i+"deg) translateZ(280px)"
+        function loadSuccess() {
+            var aImg = oContainer.getElementsByTagName("img");
+            for (var i = 0; i < 9; i++) {
+                aImg[i].style.transitionDelay = i * 200 + "ms";
+                aImg[i].style.transform = "rotateY(" + 40 * i + "deg) translateZ(280px)"
             }
-        },10);
+        }
 
         var number = 1;
         oContainer.onclick = function () {
