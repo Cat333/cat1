@@ -8,7 +8,9 @@
             margin: 0;
             padding: 0;
         }
-
+        body{
+            background: #eeeeee;
+        }
 
         #container{
             width: 64px;
@@ -24,7 +26,7 @@
         img{
             cursor: pointer;
             position: absolute;
-            transition:transform 1s ease;
+            transition: transform 1s ease;
         }
         #home{
             width: 64px;
@@ -59,6 +61,7 @@
                     for(var i=0; i<aIMG.length; i++){
                         aIMG[i].style.transitionDelay = i*50+"ms";
                         aIMG[i].style.transform = "translate(0,0) rotate(0deg)";
+                        aIMG[i].currentTransform = aIMG[i].style.transform;
                     }
                 } else {//要打开
                     this.style.transform = "rotate(-360deg)";
@@ -67,10 +70,54 @@
                         var y = -250 * Math.sin(22.5 * i * Math.PI / 180);
                         aIMG[i].style.transform = "translate(" + x + "px," + y + "px) rotate(-360deg)";
                         aIMG[i].style.transitionDelay = (aIMG.length-i)*50+"ms";
+                        aIMG[i].currentTransform = aIMG[i].style.transform;
                     }
                 }
                 bFlag = !bFlag;
             };
+
+
+
+            for(var i=0; i<aIMG.length; i++){
+                aIMG[i].state = true;//false表示动画未完成
+                aIMG[i].onclick = function () {
+                    if(this.state ){//表示动画完成
+                        this.style.transform = this.currentTransform + "scale(2)";
+                        this.addEventListener("webkitTransitionEnd",fn);
+                    }
+
+                    function fn(){
+                        this.style.transform = this.currentTransform;
+                        this.state = !this.state;
+                    }
+                };
+            }
+
+          /*******************************************************************************
+            for(var i=0; i<aIMG.length; i++){
+                aIMG[i].currentTransform = "";
+                aIMG[i].onclick = function () {
+                    this.currentTransform = this.style.transform;
+                    if(this.currentTransform.indexOf("scale(2)")==-1){//说明没有变大
+                        this.style.transform = this.currentTransform + "scale(2)";
+                    }else{
+                        this.style.transform = this.currentTransform.replace(/scale\(2\)/g,"");
+                    }
+                    this.addEventListener("webkitTransitionEnd",function(){
+                        if(this.currentTransform.indexOf("scale(2)")!=-1) {
+                            this.style.transform = this.currentTransform.replace(/scale\(2\)/g,"");
+                        }
+                        this.style.transform = this.currentTransform;
+                    });
+                    this.removeEventListener("webkitTransformEnd",function(){
+                        if(this.currentTransform.indexOf("scale(2)")!=-1) {
+                            this.style.transform = this.currentTransform.replace(/scale\(2\)/g,"");
+                        }
+                        this.style.transform = this.currentTransform;
+                    });
+                }
+            }
+***********************************************************************************************/
         </script>
 </body>
 </html>
