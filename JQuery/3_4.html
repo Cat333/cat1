@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <form method="post" action="">
+        你爱好的歌曲是：
+        <br>
+        <input type="checkbox" name="items" value="你还要怎样"/>你还要我怎样
+        <input type="checkbox" name="items" value="你就不要想起我"/>你就不要想起我
+        <input type="checkbox" name="items" value="女儿情"/>女儿情
+        <input type="checkbox" name="items" value="爱你在心口难开"/>爱你在心口难开
+        <br/>
+        <input type="button" id="checkedAll" value="全选"/>
+        <input type="button" id="checkedNone" value="不选"/>
+        <input type="button" id="checkedRev" value="反选"/>
+        <input type="button" id="send" value="提交"/>
+
+
+    </form>
+
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            $("#checkedAll").click(function(){
+                $(':checkbox').prop('checked',true);
+            });
+            $("#checkedNone").click(function(){
+                $(':checkbox').prop('checked',false);
+            });
+            $("#checkedRev").click(function(){
+                $(':checkbox').each(function(index,elem){
+                   /* if($(elem).prop('checked')){
+                        $(elem).prop('checked',false);
+                    }else{
+                        $(elem).prop('checked',true);
+                    }*/
+                    this.checked = !this.checked;
+                });
+            });
+            $("#send").on('click',function(){
+                var str = "";
+                $(':checked').each(function(){
+                    str +="  "+ $(this).val();
+                });
+                alert(str);
+            });
+        });
+    </script>
+</body>
+</html>
