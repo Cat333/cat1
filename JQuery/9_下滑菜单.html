@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            margin: 100px auto;
+            width: 500px;
+        }
+        .m{
+            float: left;
+            width: 100px;
+            height: 30px;
+            margin-right: 5px;
+            background: #CCCCCC;
+            line-height: 30px;
+        }
+        .m li{
+            background: #7e7e7e;
+            text-align: center;
+        }
+        .m ul{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul>
+        <li class="m">
+            <a href="#" >list1</a>
+            <ul>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+            </ul>
+        </li>
+        <li class="m">
+            <a href="#" >list2</a>
+            <ul>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+            </ul>
+        </li>
+        <li class="m">
+            <a href="#" >list3</a>
+            <ul>
+                <li><a href="#">5</a></li>
+                <li><a href="#">6</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $('.m').hover(function(){
+            $(this).children('ul').slideDown();
+        },function(){
+            $(this).children('ul').slideUp();
+        });
+    </script>
+</body>
+</html>
