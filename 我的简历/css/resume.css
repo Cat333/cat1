@@ -1,0 +1,63 @@
+
+#container{
+    background-image: url(../img/_MG_02211.jpg);
+    background-repeat: no-repeat;
+
+}
+#header{
+   /* background: #ec407a;*/
+    background:indianred;
+    height: 74px;
+    position: relative;
+}
+#header ul{
+    height: 29px;
+    position: absolute;
+    top: 24px;
+    left: 240px;
+}
+#header ul li{
+    float: left;
+    margin-right: 55px;
+}
+#header ul li a{
+    float: left;
+    height: 29px;
+    color: #fff;
+    font-size: 22px;
+}
+#content{
+    height:682px;
+}
+#content div{
+    width: 400px;
+    height: 200px;
+    background: #1F1F1F;
+    opacity: 0.8;
+    margin-right: 200px;
+    margin-top: 300px;
+    float:right;
+}
+#content p{
+    color: #fff;
+    font-size: 48px;
+    text-align: center;
+    line-height: 80px;
+}
+#content #dem{
+    font-size: 20px;
+}
+
+#footer{
+    background: #1F1F1F;
+    height: 65px;
+
+}
+#footer span{
+    display: block;
+    height: 100%;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    line-height: 65px;
+}
