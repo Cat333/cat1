@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="app"></div>
+<script src="react-15.3.1/build/react.js"></script>
+<script src="react-15.3.1/build/react-dom.js"></script>
+<script src="react-15.3.1/browser.js"></script><!--用来解析js中的html-->
+
+
+<script type="text/babel">
+    /*
+     *首字母必须大写
+     * 必须是一个闭合的标签
+     */
+    var SubMessagebox = React.createClass({//子组件
+        render : function(){
+            var msg=[];
+            this.props.arr.forEach(function (elem,index) {
+                msg.push(<div>{elem}</div>);
+            });
+            return (
+                    <div>{msg}</div>
+            );
+        }
+    });
+    var Messagebox = React.createClass({//组件嵌套
+        render : function(){
+            var data='123';
+            var arr = [1,2,3];
+            return (<div>
+                        <h1>Hello World</h1>
+                        <SubMessagebox str={data} arr={arr}/>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+    <div><Messagebox/><Messagebox/></div>,
+            document.getElementById('app')
+    );
+
+</script>
+
+</body>
+</html>
