@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-1.12.4.js"></script>
+</head>
+<body>
+    <input type="checkbox" id="cr"/>
+    <label for="cr">我已经阅读了上面的规则</label><!--这样一整话都可以选择-->
+    <script>
+        $(document).ready(function(){
+            $("#cr").click(function(){
+                if($("#cr").is(":checked")){
+                    alert("hello");
+                }
+            })
+        })
+    </script>
+
+</body>
+</html>
